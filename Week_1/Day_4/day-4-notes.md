@@ -64,3 +64,180 @@ runMyFunction(function(name) {
 
 // Will print "Something profound will happen to you Bob"
 ```
+
+### Arrow Functions
+
+* Arrow functions were added as part of ES6 in 2015
+  * ES === ECMA Script (European Computer Manufacturers Association)
+  * Taken from CoffeeScript
+
+```js
+// Standard version
+const sayHello = function(name) {
+  console.log(`Hello there ${name}`);
+};
+
+// Arrow function
+const sayHello = (name) => {
+  console.log(`Hello there ${name}`);
+};
+```
+
+* If there's a single line of code in the function, we can remove the curly braces and move it up
+
+```js
+const sayHello = (name) => console.log(`Hello there ${name}`);
+```
+
+* Arrow functions have implicit returns, so we don't need to write `return`
+
+```js
+const sayHello = (name) => `Hello there ${name}`;
+```
+
+* If there's only one parameter, you don't need the parenthesis
+
+```js
+const sayHello = name => `Hello there ${name}`;
+```
+
+* If there's no parameters, you still need `()` for the parameters
+
+```js
+const sayHello = () => `Hello there David`;
+```
+
+* Arrow functions do not create `this` and can't be used for it
+
+### Our Own forEach Function
+
+```js
+const pets = ['Reggie', 'Amber' , 'Cookie', 'Arye', 'Charlie'];
+
+pets.forEach(pet => console.log(`Do you want a scritch, ${pet}?`));
+
+// Do you want a scritch, Reggie?
+// Do you want a scritch, Amber?
+// ...
+```
+
+* This can also be writter to be more modular, using a callback function with the `forEach` function
+
+```js
+const pets = ['Reggie', 'Amber' , 'Cookie', 'Arye', 'Charlie'];
+
+const forEach = (arr, callback) => {
+  for (const element of arr) {
+    callback(element);
+  }
+};
+
+forEach(pets, pet => console.log(`Do you want a scritch, ${pet}?`));
+
+// Do you want a scritch, Reggie?
+// Do you want a scritch, Amber?
+// ...
+```
+
+* There are many other types of callback functions that we can create
+  * Map, Filter, every, find, sort, reduce
+
+* We can see how `.map()` works:
+
+```js
+const pets = ['Reggie', 'Amber' , 'Cookie', 'Arye', 'Charlie'];
+
+const mapped = pets.map((pet) => {
+  return `${pet} can has cheeseburger`;
+});
+
+console.log(mapped)
+
+// [
+//  'Reggie can has cheeseburger',
+//  'Amber can has cheeseburger',
+//  ...
+// ]
+```
+
+* And we can create our own callback function of `.map()` like  so:
+
+```js
+const pets = ['Reggie', 'Amber' , 'Cookie', 'Arye', 'Charlie'];
+
+const ourMap = (arr, callback) => {
+  const returnArr = [];
+
+  for (const element of arr) {
+    const returnVal = callback(element);
+    returnArr.push(returnVal);
+  }
+
+  return returnArr;
+};
+
+const mapper = ourMap(pets, (pet) => {
+  return `Hey ${pet}! Quit scratching the couch!`
+});
+
+// [
+//  'Hey Reggie! Quit scratching the couch!',
+//  'Hey Amber! Quit scratching the couch!',
+//  ...
+// ]
+```
+
+* We can see how `.filter()` works:
+
+```js
+const pets = ['Reggie', 'Amber' , 'Cookie', 'Arye', 'Charlie'];
+
+const filtered = pets.filter((pet) => {
+  if (pet === 'Reggie') {
+    return true;
+  }
+  return false;
+
+  // Or can be written as simply as this:
+  // return pet === 'Reggie';
+});
+
+console.log(filtered) // ['Reggie']
+```
+
+* This is the same as this:
+
+```js
+const pets = ['Reggie', 'Amber' , 'Cookie', 'Arye', 'Charlie'];
+
+const filtered = pets.filter(pet => pet === 'Reggie');
+
+console.log(filtered) // ['Reggie']
+```
+
+* And we can create our own callback function similar to `.filter()`
+
+```js
+const pets = ['Reggie', 'Amber' , 'Cookie', 'Arye', 'Charlie'];
+
+const ourFilter = (arr, callback) => {
+  const returnArr = [];
+
+  for (const element of arr) {
+    const returnVal = callback(element);
+    
+    if (returnVa) {
+    returnArr.push(element);
+    }
+  }
+
+  return returnArr;
+};
+
+const filtered = ourFilter(pets, (pet) => {
+  return pet === 'Reggie';
+});
+
+console.log(ourFilter)
+
+```
