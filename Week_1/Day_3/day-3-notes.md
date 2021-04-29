@@ -2,7 +2,7 @@
 
 ## Lecture Notes
 
-### Primimtive data in JS
+### Primitive data in JS
 * null, undefined, string, number, boolean, symbols, `bigInt` 
 * symbols are guaranteed unique strings (not popular)
 * `bigInt` ends with `n`
