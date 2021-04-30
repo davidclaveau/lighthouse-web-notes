@@ -10,7 +10,7 @@
 
 E.g. 
 
-```
+```js
 // FUCNTION IMPLEMENTATION
 const assertEqual = function (actual, expected){
   // If actual === expected
@@ -41,3 +41,21 @@ Prints out the following:
 
 
 ## ES6 Template Literals
+
+* We can use backticks to create Template Literal Strings in JS
+
+```js
+const example = "Template Literal";
+
+console.log(`This is an example of a ${example}!`;
+
+// This is an example of a Template Literal
+```
+
+* And we can also add our own code to the template literal:
+
+```js
+console.log(`This is an example of 2 + 2 = ${2 + 2}`);
+
+// This is an example of 2 + 2 = 4 
+```

@@ -1,6 +1,6 @@
 # Command Line Arguments
 
-* Command line arguments are strings of text used to pass additional info to a program whne an application is run through the command line interace (CLI) of an OS.
+* Command line arguments are strings of text used to pass additional info to a program when an application is run through the command line interface (CLI) of an OS.
 * Example cases of CLIs:
 
 ```
