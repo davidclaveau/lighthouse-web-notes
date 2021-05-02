@@ -17,7 +17,7 @@
 
 * Testing on Node.js vs Testing in the browser
   * For Node, you don’t need the test runner file.
-  * To include Chai, add `var chai = require('chai');` at the top of the test file.
+  * To include Chai, add `let chai = require('chai');` at the top of the test file.
   * Run the tests using the mocha command, instead of opening a browser.
 
 * You should put your tests in a separate directory from your main code files, this makesit easier to structure them
@@ -62,6 +62,10 @@ The basics of testing in browser:
   * Then, we load the code we want to test and the test files. We don’t have anything here just yet.
   * Last, we call `mocha.run` to run the tests. Make sure you call this after loading the source and test files.
 
+  ---
+
+  ### The Basic Test Building Blocks
+
 * Then we can create a new test file.
   * For example, a file named `test/arrayTest.js` to test basic array functionality.
 
@@ -86,3 +90,63 @@ describe('Array', function() {
   // We can have more its here
 });
 ```
+
+* `it` is used to create the actual tests.
+
+* The first parameter to `it` should provide a himan-readable description of the test. For example, "it should start empty", which is a good description of how arrays should behave. The code to implement the test is then written inside the function passed to `it`
+
+---
+
+### Writing the Test Code
+
+* Since we're testing that an array should be empty, we need to create an array and then ensure it's empty:
+
+```js
+/* Note: on the first line we set up the assert variable. This is just so we don't need to keep typing `chai.assert` everywhere */
+
+let assert = chai.assert;
+
+describe('Array', function() {
+  it('should start empty', function() {
+    let arr = [];
+
+    assert.equal(arr.length, 0);
+  });
+});
+```
+
+* First, you have something you're testing - this is called the **System Under Test** or **SUT**.
+
+* Then, you do something with the SUT. In the test above, we're not doing anything, since we're checking the array starts as empty.
+
+* The last thing in a test should be the validation - an assertion which checks the result. Here we are using `assert.equal` to do this. Most assertion functions take parameters in the same order: first, the "actual" value, and then the "expected" value.
+  * Chai allows different styles of assertions, such as `expect assertions`, which provide more flexibility
+
+---
+
+### Running the Test
+
+* If you're using Node.js, you can use the command `mocha` to run the test and see them in the terminal.
+
+* Otherwise, add this test to the runner by simply adding:
+
+```html
+<script src="test/arrayTest.js"></script>
+```
+
+* And add your test fiels below.
+
+* Once you've added the script, you can then load the test runner page in the browser  to see the test results:
+
+![](https://uploads.sitepoint.com/wp-content/uploads/2016/01/1453128655mocha-test-results.jpg)
+
+* If the test fail (changing the array to expect 1 and not 0), you should see this:
+
+![](https://uploads.sitepoint.com/wp-content/uploads/2016/01/1453128660mochatest-error.jpg)
+
+* We can add a `message` parameter in  the assert.equa field for a more descriptive message of what's failing.
+
+```js
+assert.equal(arr.length, 1, 'Array length was not 0');
+```
+
