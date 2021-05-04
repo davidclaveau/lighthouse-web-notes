@@ -254,7 +254,7 @@ console.log(filtered) // ['Reggie']
 ### First-class Citizen
 
 * A first-class citizen in a given programming language is an **entity which supports all the operations generally available to other entitites.** These operations typically include:
-  * being pased as an argument,
+  * being passed as an argument,
   * returned from a function,
   * modified,
   * and assigned to a variable
