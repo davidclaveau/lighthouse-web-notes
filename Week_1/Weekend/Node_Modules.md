@@ -42,3 +42,50 @@ const sayHelloTo = require('./moduleCheck');
 
 sayHelloTo('Bernie')
 ```
+
+* A thing to note about Node modules and using `modules.export`
+
+* If you're exporting multiple items with `modules.export`, then you can export it as an object.
+
+```js
+// fileA.js
+modules.export = {
+  myNumber: myNumber, // 42
+  myString: myString, // "string"
+  myFunction: myFunction // function(){}
+}
+```
+
+* And in the other file, you can accept the object and use dot notation to access the key-value pairs
+
+```js
+// fileB.js
+const myObjects = require('./fileA')
+
+myObjects.myNumber // 42
+myObjects.myString // "Answer"
+```
+
+* But we can shorthand this even more with ES6
+  * Basically, we remove the value to the key, as they're the same
+
+```js
+// fileA.js
+modules.export = {
+  myNumber,
+  myString,
+  myFunction:
+}
+```
+
+* And then we make the import in fileB to be an object
+  * And we can remove the `myObjects` to match the exported keys
+
+
+```js
+// fileB.js
+const { myNumber, myString, myFunction }= require('./fileA')
+
+myNumber // 42
+myString // "Answer"
+```
