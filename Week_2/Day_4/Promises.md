@@ -181,3 +181,49 @@ Promise.all(promises) // Takes an array as a parameter
 * The returned array correspond to the index value of the promises that are handed in
 
 * If any one of them returns with an error (rejected), the system will call the `catch`.
+
+* Then it will run when all promises resolve
+
+* `Promise.race` will run differently, and will return the first promise in the event loop
+
+```js
+const functions = require('./promise-generator');
+
+const returnPromise = functions.returnPromise;
+const returnRejectedPromise = functions.returnRejectedPromise;
+
+const randomDelay = () => Math.floor(Math.random() * 5000);
+
+const promiseOne = returnPromise('one', randomDelay());
+const promiseTwo = returnPromise('two', randomDelay());
+const promiseThree = returnPromise('three', randomDelay());
+
+const promises = [promiseOne,  promiseTwo, promiseThree];
+
+Promise.race(promises)
+  .then((data) => {
+    console.log(data);
+  });
+```
+
+* This will return either one, two, or three based on which value's delay was the shortest
+
+---
+
+## Creating your own Promises
+
+```js
+const returnRandomPromise = (value, delay = 1000) => {
+  const num = Math.floor(Math.random() * 2);
+  if (num < 1) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => resolve(`yay! resolved!: ${value}`), delay);
+    });
+  }
+  return new Promise((resolve, reject) => {
+    setTimeout(() => reject(`doh! rejected: ${value}`), delay);
+  });
+};
+```
+
+* This is where we would want to refactor the code to creawte the `new` Promise with the `resolve` and `reject` and then create the conditionals to return them as needed.
