@@ -79,3 +79,16 @@ class Pizza {
 ```js
 let pizza = new Pizza('large', 'thin');
 ```
+
+## Dependency Injection
+
+* The process of passing an object the information it needs when we create it. For example, our LHL cryptocurrency example:
+
+```js
+t1 = new Withdrawal(50.25, myAccount); // <-- myAccount
+t1.commit();
+```
+
+ * This allows the deposit and withdrawal objects to not rely on any global or outerscoped data.
+ 
+ * Additionally, transactions are no longer tied to only a single account. We can have these transaction records work with any account.
