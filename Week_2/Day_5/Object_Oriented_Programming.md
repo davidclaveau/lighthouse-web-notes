@@ -41,7 +41,7 @@ const dog = {
 
 * `this` in JS is determined by the context at the time of the call and depends on how and where it was called.
 
-* All we really need to know for OO in JS, is that when you ise `this` inside a method, `this` refers to the object that the method was called on:
+* All we really need to know for OO in JS, is that when you use `this` inside a method, `this` refers to the object that the method was called on:
 
 ```js
 const dog = {
@@ -52,4 +52,41 @@ const dog = {
 };
 
 dog.speak();
+```
+
+* However, we are unable to reassign and call the `dog.speak` method using `this`. For example:
+
+```js
+const dog = {
+  sound: "woof",
+  speak: function() {
+    console.log(this.sound);
+  }
+};
+
+dog.speak();
+
+let talkFunction = dog.talk
+talkFunction() // undefined
+```
+
+* That's because the functional language part of JS interferes with the OOP part of JS and `this` loses meaning when it's reassigned to `talkFunction`.
+  * Basically, `this` looks something like this:
+
+```js
+let talkFunction = function() {
+  console.log(this.sound); // this means nothing
+}
+
+talkFunction() // undefined
+```
+
+* You will often find the `.bind` in JS to allow the use of `this` with an object.
+
+```js
+let talkFunction = dog.talk;
+
+let boundFunction = talkFunction.bind(dog);
+
+boundFunction() // "woof"
 ```
