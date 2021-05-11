@@ -34,6 +34,8 @@ app.listen(port, () => {
 });
 ```
 
+## Middleware
+
 * We can `use` middleware in our Express application to help parse information in the middle of our application.
 
 ```js
@@ -108,6 +110,8 @@ app.get('/users', (req,res) => {
   });
 });
 ```
+
+## Templating
 
 * We can send back an html page as well, for example a fake `index.html` page we created:
 
