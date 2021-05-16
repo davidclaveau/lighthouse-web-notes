@@ -31,21 +31,22 @@ console.log("I am done being programmed.");
 
 * There's a thing with JS functions where a thing can be done **asynchronously**
   * JS does this by getting on with the other thing while one event is being processed and scheduled to happen later
+    * I.e. completing the main thread, and then completing other functions in the `event loop`
 
 ## Using `setTimeout()`
 
-* For example, we can use setTimeout to perform an action in *the future*
+* For example, we can use `setTimeout` to perform an action in *the future*
 
 ```js
 // (setTimeout takes a callback and a time)
 setTimeout( () => { console.log("Do something"); }, 3000 );
 ```
 
-* The setTimeout is soemthing that *schedules* something in the future
+* The `setTimeout` is a method that *schedules* something to be completed in the future (in ms)
 
 * JS takes two actions:
   * The *main thread*, where things happen sequentially
-  * After completing the main thread, it runs the *scheduled tasks*
+  * After completing the main thread, it runs the *scheduled tasks* in the `event loop`
 
 * We want to consolidate everything in a function:
 
@@ -94,7 +95,7 @@ function doAction(name, time){
 };
 ```
 
-* And we can add time to our function calls, so it's passed into the function and can be called using each call's time argument:
+* And we can add `time` to our function calls, so it's passed into the function and can be called using each call's time argument:
 
 ```js
 const start =  Date.now();
@@ -132,7 +133,7 @@ doAction("I am done being programmed.", 3000);
 ```
 
 * Now we have things happening as scheduled, they're still occuring all at once
-  * setTimeout() is pretty quick to process the timeout requests
+  * setTimeout() is pretty quick to process the timeout requests so it just all flies out to the console immediately
 
 ## Setting another parameter to call the next function
 
@@ -254,7 +255,7 @@ const = () => {
 
 ## Using `setInterval()`
 
-* But this is still quite a rigid framework, so we would want to separate and have these functions call at specific times (at our own discretion)
+* But this is still quite a rigid framework, so we would want to separate and have these functions called at specific times (at our own discretion)
 
 * We can do this using `setInterval()` to do this
 
