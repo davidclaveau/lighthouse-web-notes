@@ -21,9 +21,10 @@ sayHello('World');
 
 * Think about functions as input, processing, and output
 
-* And consider a function as a contract
-  * A line of code calls the function (sayHello()) and passes the argument as input
-  * We expect something to happen using that function while passing that argument
+* And consider a function as a *contract*
+  * A line of code calls the function (`sayHello()`) and passes the argument as **input**
+  * It **processes**
+  * We expect something to happen using that function while passing that argument (**output**)
 
 * Quick sidenote: we can use `nvm` to switch between different node versions
 
@@ -43,11 +44,11 @@ const expected = "Hello World";
 assert.equal(actual, expected)
 ```
 
-* If we run `assert.equal(actual, expected)` and it is true, nothing will happen
-* If it runs and it's false, we are thrown an error by the `assert.equal` function
+* If we run `assert.equal(actual, expected)` and it is `true`, nothing will happen
+* If it runs and it's `false`, we are thrown an error by the `assert.equal` function
 
 * We would like to strip out our tests and keep them in a separate file away from the main  code
-  * Keep the main code cleaner and more efficient
+  * Keep the main code clean and more efficient
 
 * So our main file looks like this:
 
@@ -70,6 +71,7 @@ const assert = require('assert').strict;
 // This looks to the file and imports the function
 // using that module.export = sayHello;
 const sayHello = require('./hello-wold')
+// (./) means we're calling in the same directory
 
 const actual = sayHello("World");
 const expected = "Hello World";
@@ -125,16 +127,20 @@ assert.equal(actual, expected)
 const mainFunctions = require('../hello-wold')
 ```
 
-Now we can create some tests using the mocha framework
+Now we can create some tests using the `mocha` framework
   * This uses the `describe` and `it` functions
   * `It` is an arbitrary test that writes a string when I expect it to
 
 ```js
+//What it's testing
 describe('Main functions test', () => {
+  // What the test should output
   it ('writes Hello World when I expect it to', () => {
     const actual = mainFunctions.sayHello("World");
     const expected = "Hello World";
-    assert.equal(actual, expected) 
+
+    // What actually happens
+    assert.equal(actual, expected)
   });
 });
 ```
@@ -143,7 +149,7 @@ describe('Main functions test', () => {
 
 ```
 main functions test
-  1) writes Hello World when I expect it to.
+  ✓ 1) writes Hello World when I expect it to.
 
 1 passing (45ms)
 ```

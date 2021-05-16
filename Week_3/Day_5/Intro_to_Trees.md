@@ -22,3 +22,18 @@
   - Parent: Parent directory `../`
   - Children: All the sub-directories or files with in this directory
   - Data: Contents of the file (if file) + metadata (permissions, etc)
+
+## Tree Traversing
+
+* When we traverse a tree structure, there's *breadth first traversal* and *depth first traversal*
+
+* **Breadth first traversal** will check the nodes closest to the root node, before checking the nodes that are father aware.
+
+* A breadth first traversal would start at the root and work through each child (and their siblings) until there's no children left, then gets through each child's grandchildren (and their siblings). (Think: row by row)
+
+* **Depth first traversal** will accomplish the same task as breadth first traversal, but will try to visit the leaf nodes.
+
+* That means going from the root node to the first child, then through the child's child, then the child's child's child... etc, basically reaching that last child in the tree (leaf). Then back to the root's second child, and so on.
+
+* A tree is actually a **recursive** data structure, as each tree is made up of smalleer sub trees, which themselves are made up of even smaller sub trees.
+
