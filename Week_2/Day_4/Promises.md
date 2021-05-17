@@ -5,15 +5,16 @@
 ```js
 functionCall('string', (err, message) => {
   anotherCall((err, message) => {
-    // here am nested inside two callback calls.
-    // this isn't good
+    // Here I am nested inside two callback calls.
+    // This isn't good
+    // And it ain't getting any better.
   });
 });
 ``` 
 
 * As we see in the survey-callbacks-example.js file, this cascade of function calls is both incredibly WET and can cause all kinds of issues with errors.
 
-* What we can do is use **promises** to create a cleaner version
+* What we can do is use **Promises** to create a cleaner version
 
 ```js
 rlp.questionAsync('What do you think of Node.js? ')
@@ -26,16 +27,16 @@ rlp.questionAsync('What do you think of Node.js? ')
 * Note that the first line doesn't have a semicolon:
 
 ```js
-rlp.questionAsync('What do you think of Node.js? ')
+rlp.questionAsync('What do you think of Node.js? ') // <--
 ```
 
-* That's because we're calling the `.then` function on the object that's called by the promise.
+* That's because we're calling the `.then` *function* on the object that's called by the `promise`.
 
 ```js
   .then((answer) => {
 ```
 
-* Promises can either returned *resolved* or *in error*
+* Promises can be either returned as *resolved* or *in error*
 
 * This is the callback that's called if it's *resolved* in the 'positive' sense:
 
@@ -73,10 +74,10 @@ const returnPromise = (value, delay = 1000) => {
 };
 ```
 
-* Looking at the promises, we're passing a `value` and a `delay` (with a default parameter)
+* Looking at the promises, we're passing a `value` and a `delay` (with a default parameter =1000)
 
-* We're making a `new` Promise object
-  * The new Promise  object is created by passing another baclback
+* We're making a `new` Promise *object*
+  * The new Promise  object is created by passing another callback
   * We have `resolve` and `reject`
   * We call `resolve` callback when the promise resolves, and `reject` if it returns rejected
 
@@ -85,7 +86,7 @@ const returnPromise = (value, delay = 1000) => {
 ```js
 const promiseGenerator = require('./promise-generator');
 
-const promise = returnPrompromiseGenerator.returnPromiseise('first promise', 4444);
+const promise = returnPromiseGenerator.returnPromises('first promise', 4444);
 
 console.log(promise);
 ```
@@ -125,6 +126,7 @@ promise
     console.log("data2:",data2);
   });
 
+// (Output)
 // data: data was resolved! yay!
 // data2: another thing
 ```
@@ -226,4 +228,4 @@ const returnRandomPromise = (value, delay = 1000) => {
 };
 ```
 
-* This is where we would want to refactor the code to creawte the `new` Promise with the `resolve` and `reject` and then create the conditionals to return them as needed.
+* This is where we would want to refactor the code to create the `new` Promise with the `resolve` and `reject` and then create the conditionals to return them as needed.

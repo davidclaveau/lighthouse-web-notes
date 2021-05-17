@@ -37,11 +37,11 @@ const dog = {
 
 ## `this`
 
-* We use this within a line of code as if it were a variable, but it's actually a keyword like `for` or `function`.
+* We use `this` within a line of code as if it were a variable, but it's actually a keyword like `for` or `function`.
 
 * `this` in JS is determined by the context at the time of the call and depends on how and where it was called.
 
-* All we really need to know for OO in JS, is that when you use `this` inside a method, `this` refers to the object that the method was called on:
+* All we really need to know for OO in JS is that - when you use `this` inside a method - `this` refers to the object that the method was called on:
 
 ```js
 const dog = {

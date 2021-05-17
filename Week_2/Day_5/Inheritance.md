@@ -17,7 +17,7 @@ class Student {
     this.cohort = cohort;
   }
 
-  // identical! Smells of code duplication
+  // Identical! Smells of code duplication (WET)
   bio() {
     return `My name is ${this.name} and here's my quirky fact: ${this.quirkyFact}`;
   }
@@ -40,7 +40,7 @@ class Mentor {
     this.onShift = false;
   }
 
-  // identical! Smells of code duplication
+  // Identical! Smells of code duplication (WET)
   bio() {
     return `My name is ${this.name} and here's my quirky fact: ${this.quirkyFact}`;
   }
@@ -54,13 +54,13 @@ class Mentor {
 ```js
 // This class represents all that is common between Student and Mentor
 class Person {
-  // moved here b/c it was identical
+  // Moved here b/c it was identical
   constructor(name, quirkyFact) {
     this.name = name;
     this.quirkyFact = quirkyFact;
   }
 
-  // moved here b/c it was identical
+  // Moved here b/c it was identical
   bio() {
     return `My name is ${this.name} and here's my quirky fact: ${this.quirkyFact}`;
   }
@@ -69,19 +69,19 @@ class Person {
 
 ```js
 class Student extends Person {
-  // stays in Student class since it's specific to students only
+  // Stays in Student class since it's specific to students only
   enroll(cohort) {
     this.cohort = cohort;
   }
 }
 
 class Mentor extends Person {
-  // specific to mentors
+  // Specific to mentors
   goOnShift() {
     this.onShift = true;
   }
 
-  // specific to mentors
+  // Specific to mentors
   goOffShift() {
     this.onShift = false;
   }
@@ -94,7 +94,7 @@ class Mentor extends Person {
 
 ## Method Overriding
 
-* Sometimes you want a subclass to have a similar but different behavior than a superclass.
+* Sometimes you want a subclass to have similar, but different, behavior than a superclass.
 
 * Like, having a mentor in the example above say "I am a mentor at LHLs..." before saying "My name is" in the `bio` method.
 

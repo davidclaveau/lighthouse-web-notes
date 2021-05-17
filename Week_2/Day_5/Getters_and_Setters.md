@@ -1,6 +1,6 @@
 # Getters and Setters
 
-* Getts and setters are special methods that are used to get the value of a property or set the value
+* `Get`ters and `Set`ters are special methods that are used to get the value of a property or set the value
 
 ```js
 class Pizza {
@@ -96,7 +96,7 @@ class Pizza {
 
   set size(size) {
     if (size === 's' || size === 'm' || size === 'l') {
-      this._size = size;  // preven infinite loop!
+      this._size = size;  // prevent infinite loop!
     }
   }
 }

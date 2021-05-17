@@ -2,8 +2,9 @@
 
 ### Intro Discussion
 
-* Internet was invented by DARPA in the 60s
-* Web was invented at CERN
+* The **web** are the *pages you see* when you're at a device and you're online. The the **internet** is the *network of connected computers* that the web works on
+  * *Internet* was invented by DARPA in the 60s
+  * *Web* was invented at CERN
 
 * URL - Uniform Resource Locator
 
@@ -119,7 +120,7 @@ client.on('data', (message) = {
 
 * However, the client will receive *raw data* from the server when it receives the `client.write()`
 
-* We need to encode the data in `UTF8`
+* We need to encode the data in `UTF-8`
 
 * We need to add the following:
 

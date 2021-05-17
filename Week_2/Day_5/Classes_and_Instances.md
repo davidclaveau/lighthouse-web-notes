@@ -1,6 +1,6 @@
 # Classes and Instances
 
-* In OOP, **classes** are the *blueprints* (templates) that we use to create **instances** of objects
+* In Object Oriented Programming (OOP), **classes** are the *blueprints* (templates) that we use to create **instances** of objects
 
 ## Class
 
@@ -11,16 +11,16 @@ class Pizza {
 
 }
 ```
-* Class names should always be a noun and the first letter should be capitalized.
+* Class names should always be a **noun** and the **first letter should be capitalized.**
 
-* To create a new object from a class, we would use the `new` keyword:
+* To create a new object from a `class`, we would use the `new` keyword:
 
 ```js
 let pizza1 = new Pizza();
 let pizza2 = new Pizza();
 ```
 
-* When you use a class to create an object, it's an **instance** of that class. So `pizza1` and `pizza1` are *instances* of the `Pizza` class.
+* When you use a class to create an object, it's an **instance** of that class. So `pizza1` and `pizza2` are *instances* of the `Pizza` class.
 
 * Note that these are not the same, however
 
@@ -52,17 +52,17 @@ class Pizza {
 
 ## Introduction to `constructor`
 
-* A `constructor` is used to set up the default state for new instances; ie, setting up default values for any new object's properties. 
+* A `constructor` is used to set up the default state for new instances; i.e., setting up default values for any new object's properties. 
 
-* Every class can have a single constructor method that will get called when an instance of that class is created.
+* Every class can have a **single constructor** method that will get called when an instance of that class is created.
   * We can setup any default value to the constructor and therefore any instanced object
   * Because it's a method, we can also **pass in values** to the constructor method.
 
 ```js
 class Pizza {
 
-  constructor(size, crust) {
-    this.size = size;
+  constructor(size, crust) { // Pass in values size and crust
+    this.size = size; // Assign them using `this`
     this.crust = crust;
     this.toppings = ["cheese"];
   }
@@ -90,5 +90,5 @@ t1.commit();
 ```
 
  * This allows the deposit and withdrawal objects to not rely on any global or outerscoped data.
- 
+
  * Additionally, transactions are no longer tied to only a single account. We can have these transaction records work with any account.
