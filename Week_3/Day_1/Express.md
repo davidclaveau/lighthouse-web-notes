@@ -37,13 +37,17 @@ app.listen(port, () => {
 ## Middleware
 
 * We can `use` middleware in our Express application to help parse information in the middle of our application.
+* Our application should have this order:
+  1. Require statement
+  2. Constant declarations
+  3. `app.use` statements (middleware)
 
 ```js
 const express = require('express');
 const app = express();
 const port = 3000;
 
-// Middleware will always have `use`
+// Middleware will have `use`
 // `.use` is always a callback
 app.use((req, res) => {
   console.log(req.method);
@@ -76,8 +80,8 @@ app.use((req, res, next) => { // Next is a function
 
 * Express works from top to bottom, and will do `.use` first
 
-* We can use `morgan` inside of our server to help with logging information to the console
-  * the `dev` component of morgan will give us request, status code, request time, and other useful information
+* We can use the middleware program `morgan` inside of our server to help with logging information to the console
+  * the `dev` component of `morgan` will give us request, status code, request time, and other useful information
 
 ```js
 const express = require('express');
@@ -85,7 +89,7 @@ const express = require('morgan');
 const app = express();
 const port = 3000;
 
-app.use(morgan('dev')); // <--- GET /users 200 2.644ms - -
+app.use(morgan('dev')); // <--- "GET /users 200 2.644ms - -"
 
 app.use((req, res) => {
   console.log(req.method);
@@ -111,13 +115,13 @@ app.get('/users', (req,res) => {
 });
 ```
 
-## Templating
+## Templating (EJS)
 
-* We can send back an html page as well, for example a fake `index.html` page we created:
+* We can send back an HTML page as well, for example a fake `index.html` page we created:
 
 ```js
 app.get('/users', (req,res) => {
-  res.sendFile('./index.html') // We'll get error saying "need absolute path
+  res.sendFile('./index.html') // We'll get error saying "need absolute path"
 });
 ```
 

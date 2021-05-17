@@ -48,5 +48,19 @@ This repository contains all of the notes taken by [David](https://www.lighthous
     * [Classes and Instances](/Week_2/Day_5/Classes_and_Instances.md)
     * [Inheritance](/Week_2/Day_5/Inheritance.md)
     * [Getters and Setters](/Week_2/Day_5/Getters_and_Setters.md)
-
   * [Weekend](/Week_2/Weekend)
+    * [Domain Name System](/Week_2/Weekend/Domain_Name_System.md)
+    * [Unicode](/Week_2/Weekend/Unicode.md)
+
+* [Week 3](/Week_3)
+  * [Day 1](/Week_3/Day_1)
+    * [Express](/Week_3/Day_1/Express.md)
+    * [Web Servers 101](/Week_3/Day_1/Web_Servers_101.md)
+  * [Day 2](/Week_3/Day_2)
+    * [CRUD](/Week_3/Day_2/CRUD.md)
+  * [Day 3](/Week_3/Day_3)
+    * [HTTP Cookies and User Authentication](/Week_3/Day_3/HTTP_Cookies_and_User_Authentication.md)
+  * [Day 4](/Week_3/Day_4)
+  * [Day 5](/Week_3/Day_5)
+  * [Weekend](/Week_3/Weekend)
+

@@ -8,4 +8,4 @@
 
 * UTF-8 also allows backwards compatability with systems that still use the 128 character ASCII system.
 
-* The first byte of the UTF-8 encoded string will indicate the concatentation of the other bytes 1s and 0s. This means that, instead of "a" being four bytes with three of the bytes being 0, the first byte indicates the which parts of the bytes to read.
+* The first byte of the UTF-8 encoded string will indicate the concatentation of the other bytes 1s and 0s. This means that, instead of "a" being four bytes with three of the bytes being 0, the first byte indicates which parts of the other bytes to read.

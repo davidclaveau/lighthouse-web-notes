@@ -14,7 +14,7 @@ www.example.com/blog/443/edit
     * To get the specific number, there are ways to specify that **dynamically**
     * We see with Node that we use `req.params`
       * Eg. `req.params.id` when we create the route - this corresponds to the `/blog/:id/` that we use.
-      * (Conversely, we get the form data from the `req.body`)
+      * (Conversely, we get the form data from the `req.body`) using the `bodyParser` middleware).
 
 --- 
 
@@ -35,7 +35,7 @@ www.example.com/blog/443/edit
 
 * With rendering a page, such as `/login` or `/register`, we use `.get` route.
 * To access the form on this page, we need to use a `.post` route with the same `/login` or `/route` path
-  * In the template, it's the `value` attribute in the `input` tag that is seen by the user ("Save", "Register", "Delete", etc.)
+  * In the template, we can create a button using the `input` tag. It's the `value` attribute in the `input` tag that is seen by the user ("Save", "Register", "Delete", etc.)
 
 ```html
 <input type="submit" value="Register">
@@ -57,7 +57,7 @@ app.post("/login", (req, res) => {
 ```
 
 * These are considered convenience variables, but also *candidate values* as we don't know if the data entered is being saved yet.
-  * Helps simplify writing the next lines
+  * Helps to simplify writing the next lines of code:
 
 ```js
 app.post("/login", (req, res) => {
@@ -113,7 +113,7 @@ app.get("/logout", (req, res) => {
 
 * Of course, all of this is quite problematic because cookies are easily available to end users
   * We wouldn't want to share the cookie values as plain text
-  * The code needs to be a lot more defensive about this stuff
+  * The code needs to be a lot more defensive about this
 
 ---
 
@@ -123,11 +123,13 @@ app.get("/logout", (req, res) => {
 app.get("/edit", (req, res) => {
   // Grab the user from cookies
   const username = req.cookies.user;
+
   // Match the cookie user to our password 'database'
   const password = users[username];
+
   // Now we want to pass the password value to the template
-  // So it can be rendered in the template in some form for the user
-  const templateVars = {password: password}
+  // So it can be rendered in the template in some way for the user
+  const templateVars = { password: password }
   res.render("/edit", templateVars);
 });
 

@@ -14,14 +14,14 @@
   * Address of the server: the *host/domain* (`localhost`)
   * One host can have multiple applications
     * We need to know the particular **port** that this web app is hosted on
-  * In summary: we need the **domain** and the **port**
+  * In summary: **we need the domain and the port**
 
-* Everything on the internet has to be assigned a **internet protocol** address
+* Everything on the internet has to be assigned an **internet protocol** address
 
 ## Communicating via HTTP
 
 * We have to put together a `request` to the server
-  * Can ask you do something, or ask you to give me something
+  * Can ask you do something (POST), or ask you to give me something (GET?
   * We can indicate these using HTTP verbs
     * `GET` or `POST`
 
@@ -118,14 +118,15 @@ if (req === 'GET /users') {
 });
 ```
 
-* We won't actually use `http` from Node, but we would rather use Express.
+* We won't actually use `http` from Node, but we would rather use **Express**.
 
 ## HTTP Status Codes
 
 * Status codes tell the browser how the request went
 * 304, 200, 404, 500
-* https://http.cat/ is a great library of http statuses
-* We can specify the conde in our responses
+* https://http.cat/ is a great library of HTTP statuses
+* We can specify the code in our responses
+  * `res.status(404).render("error", templateVars)`
 
 ## Middleware
 
@@ -136,7 +137,7 @@ if (req === 'GET /users') {
   * We use middleware to:
     * Grab the cookies and put it into req.cookies
     * Grab the body and put into req.body
-    * USe it for encryption
+    * Use it for encryption
 
 ## Templating / Server-side Rendering
 

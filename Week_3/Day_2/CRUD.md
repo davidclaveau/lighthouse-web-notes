@@ -4,15 +4,16 @@
 
 ### Setting up the basics
 
-* Fun fact: `localhost:8080` is generally just a developers working port.
+* Fun fact: `localhost:8080` is generally just a developer's working port.
 * Don't forget that we need to create a `package.json` through an `npm init -y` and then we can install Express with `npm i express`
+  * `-y` just defaults all questions in the `init`
 
 * Within the `server.js` file:
 
 ```js
 const PORT = 8080;
 const express = require("express")
-const app = express(); // Don't forget to call immediately 
+const app = express(); // Don't forget to invoke immediately 
 ```
 
 * When we create the routes with Express, we can specify the `get` request
@@ -38,8 +39,8 @@ app.listen(PORT, () => {
 * Create a READ route for our app:
 
 ```js
+// Knows to look in views/ directory
 app.get("/objectives", (req, res) => {
-  // Knows to look in views/ directory
   // For the `objectives.ejs` file
   res.render("objectives");
 });
@@ -66,7 +67,7 @@ app.get("/objectives", (req, res) => {
 
 ### Templates
 
-* A template, being mostly `html`, is a vehicle to return dynamic information to the browser
+* A template with `ejs`, being mostly `html`, is a vehicle to return *dynamic* information to the browser
   * We can put the value of *variables* into the template
   * This allows `html` to be dynamic and change the data that's presented as required
 
@@ -88,7 +89,8 @@ app.set("viewset engine", "ejs") // <---
 app.get("/objectives", (req, res) => {
   let awesome = 'Awesome';
   
-  // We need to pass the key-value pair(s)
+  // We need to pass an object
+  // With the key-value pair(s)
   // As the second argument to .render
   const templateVars = { feeling: awesome };
   
@@ -101,7 +103,7 @@ app.get("/objectives", (req, res) => {
   * We can use the `ejs` tags to output different variables in the view
 
 ```js
-// Has output in html
+// Has output in html (=)
 <%= %>
 
 // Does NOT output
@@ -125,7 +127,7 @@ app.get("/objectives", (req, res) => {
 
     <h1>Objectives</h1>
 
-    <h2><%=feeling%></h2>
+    <h2><%= feeling %></h2>
     <!-- grabs templateVars.feeling and prints out 'Awesome' on the html page -->
   
 </body>
@@ -171,7 +173,7 @@ app.get("/objectives", (req, res) => {
     <table>
       <tr><th>Question</th><th>Answer</th></tr>
       
-      <!-- Note, you need the alligator tag on each end of JS code-->
+      <!-- Note, you need the alligator tag on each line of JS code-->
       <!-- Think about it like: what is this line doing? HTML or JS? -->
       <% for (let objective in objectives) { %>
 
@@ -257,7 +259,7 @@ app.post("/newpath", (req, res) => {
 });
 ```
 
-* And we use middleware to pull in the submission details
+* And we use **middleware** to pull in the submission details
 
 * We use `body-parser` to take this information and make it readable for us
 
@@ -309,8 +311,10 @@ app.post("/newpath", (req, res) => {
 
   // Get the `current` keys from the objectives object
   const keys = Object.keys(objectives).map(x=>+x);
+
   // Get the (current) last element in the keys
   let last_element = key[keys.length - 1];
+
   // Then, get the newly added element's position, to be added
   let next_element = last_element + 1;
 
@@ -334,7 +338,7 @@ app.get("/objectives/:id/delete", (req, res) => {
 });
 ```
 
-* `req.params` has all of the parameters that are in your dynamic URL
+* `req.params` has all of the parameters that are in your dynamic URL (`:id`)
 
 ```js
 app.get("/objectives/:id/delete", (req, res) => {

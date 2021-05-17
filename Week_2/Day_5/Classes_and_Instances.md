@@ -92,3 +92,14 @@ t1.commit();
  * This allows the deposit and withdrawal objects to not rely on any global or outerscoped data.
 
  * Additionally, transactions are no longer tied to only a single account. We can have these transaction records work with any account.
+
+ ## Abstraction
+
+ * Abstraction involves hiding the inner workings of an object in favor of exposing a simple interface to that object.
+ * Abstraction makes it easy to change how an object works internally without having to change the code that uses the object.
+ * Abstraction requires us to initially write more code to separate an object's interface from it's implementation.
+
+ ## Single Responsibility Principle
+
+ * Any class should only be responsible for a single part of the app's functionality.
+  * A class should only have one reason to change. It is only responsible for one thing.
