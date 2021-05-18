@@ -131,3 +131,24 @@
 
 * We can't use `flexbox` for getting items to wrap around other content
   * We need to rely on `float` 
+
+## `em`
+
+* An `em` is a unit of measurement. However, unlike a `pixel` which has a fixed absolute size, the size of an `em` is relative to its parent's **font** size.
+
+* For example, if the font-size for a <div> is 16px, then 1`em` of space in that <div> is 16px. 1.5`em` in that <div> would be 24px, 2`em` would be 32px, etc. By using `em` to specify things like margin, border, and padding, the spacing of those things will automatically change if a change is made to the font size.
+
+## CSS Refresher
+
+* We can use the Chrome Dev Tools to see the `Elements` and the `Styles` that are applied to an element
+  We can go to `Computed` to see *all* the styling that's applied (and not applied) to an element
+
+## Specificity Calculations
+
+* There's a calculation on specificity of styling
+  * The system pays attention to which style is the most specific to an element.
+* Specificity = (1 * number of elements) + (10 * number of classes) + (100 * number of IDs) + (1000 * inline styles)
+  * This is often represent with dash-separated numbers `0-0-0-0`
+  * The highest number applied to an element from this calculation would be showed in the browser.
+  * [CSS Specificity Examples](https://cssspecificity.com/)
+  * [More on Specificity](https://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/)
